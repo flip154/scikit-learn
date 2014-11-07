@@ -301,7 +301,7 @@ def roc_auc_score(y_true, y_score, average="macro", sample_weight=None,
             idx_last = idx.max()
             idx_next = idx_last + 1
             xc = [fpr[idx_last], fpr[idx_next]]
-            yc = [tpr[idx_last], fpr[idx_next]]
+            yc = [tpr[idx_last], tpr[idx_next]]
             tpr = np.r_[tpr[idx], np.interp(max_fpr, xc, yc)]
             fpr = np.r_[fpr[idx], max_fpr]
             partial_roc = auc(fpr, tpr, reorder=True)
